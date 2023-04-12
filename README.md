@@ -1,1 +1,1 @@
-# Hoihoi - Student tutor for students - Android flutter app
+# Hoihoi - Student tutor for student - Android flutter app
