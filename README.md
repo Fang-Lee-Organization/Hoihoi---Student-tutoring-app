@@ -1,2 +1,1 @@
-# Hoihoi - Student tutoring app
- Second year android project
+# Hoihoi - Student tutor for students - Android flutter app
