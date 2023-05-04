@@ -11,7 +11,7 @@ class SocialButton extends StatelessWidget {
     Config().init(context);
     return OutlinedButton(
       style: OutlinedButton.styleFrom(
-        padding: const EdgeInsets.symmetric(vertical: 15),
+        padding: const EdgeInsets.symmetric(vertical: 10),
         side: const BorderSide(width: 1, color: Colors.black),
       ),
       onPressed: () {},
@@ -22,8 +22,8 @@ class SocialButton extends StatelessWidget {
           children: <Widget>[
             Image.asset(
               'assets/$social.png',
-              width: 40,
-              height: 40,
+              width: 30,
+              height: 30,
             ),
             Text(
               social.toUpperCase(),

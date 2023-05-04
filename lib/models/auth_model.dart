@@ -49,7 +49,7 @@ class AuthModel extends ChangeNotifier {
 
 //when login success, update the status
   void loginSuccess(
-      Map<String, dynamic> userData, Map<String, dynamic> appointmentInfo) {
+        Map<String, dynamic> userData, Map<String, dynamic> appointmentInfo) {
     _isLogin = true;
 
     //update all these data when login

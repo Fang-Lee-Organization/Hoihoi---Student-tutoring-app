@@ -19,6 +19,8 @@ class _MainLayoutState extends State<MainLayout> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset : false,
+
       body: PageView(
         controller: _page,
         onPageChanged: ((value) {
@@ -35,6 +37,7 @@ class _MainLayoutState extends State<MainLayout> {
       ),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: currentPage,
+        unselectedItemColor: Colors.white70,
         onTap: (page) {
           setState(() {
             currentPage = page;

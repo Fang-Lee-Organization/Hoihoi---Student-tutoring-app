@@ -142,7 +142,7 @@ class _AppointmentPageState extends State<AppointmentPage> {
                   return Card(
                     shape: RoundedRectangleBorder(
                       side: const BorderSide(
-                        color: Colors.grey,
+                        color: Colors.white,
                       ),
                       borderRadius: BorderRadius.circular(20),
                     ),
@@ -157,8 +157,8 @@ class _AppointmentPageState extends State<AppointmentPage> {
                           Row(
                             children: [
                               CircleAvatar(
-                                backgroundImage: NetworkImage(
-                                    "http://127.0.0.1:8000${schedule['doctor_profile']}"),
+                                backgroundImage: NetworkImage(Config.base_url +
+                                    schedule['doctor_profile']),
                               ),
                               const SizedBox(
                                 width: 10,
@@ -170,6 +170,7 @@ class _AppointmentPageState extends State<AppointmentPage> {
                                     schedule['doctor_name'],
                                     style: const TextStyle(
                                       color: Colors.black,
+                                      fontSize: 16,
                                       fontWeight: FontWeight.w700,
                                     ),
                                   ),
@@ -255,7 +256,7 @@ class ScheduleCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: Colors.grey.shade200,
+        color: Colors.white,
         borderRadius: BorderRadius.circular(10),
       ),
       width: double.infinity,
@@ -293,7 +294,7 @@ class ScheduleCard extends StatelessWidget {
               child: Text(
             time,
             style: const TextStyle(
-              color: Config.primaryColor,
+              color: Config.primaryColor
             ),
           ))
         ],

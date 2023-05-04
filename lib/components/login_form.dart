@@ -22,6 +22,7 @@ class _LoginFormState extends State<LoginForm> {
   final _emailController = TextEditingController();
   final _passController = TextEditingController();
   bool obsecurePass = true;
+
   @override
   Widget build(BuildContext context) {
     return Form(
@@ -79,10 +80,11 @@ class _LoginFormState extends State<LoginForm> {
                   //login here
                   final token = await DioProvider()
                       .getToken(_emailController.text, _passController.text);
+                  // print(token);
 
                   if (token) {
                     //auth.loginSuccess(); //update login status
-                    //rediret to main page
+                    //MyApp.navigatorKey.currentState!.pushNamed('main'); //redirect to main page
 
                     //grab user data here
                     final SharedPreferences prefs =
@@ -112,6 +114,9 @@ class _LoginFormState extends State<LoginForm> {
                         });
                       }
                     }
+                  }
+                  else{
+                    print(token);
                   }
                 },
                 disable: false,

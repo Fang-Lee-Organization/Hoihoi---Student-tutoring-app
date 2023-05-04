@@ -1,5 +1,5 @@
 import 'package:doctor_appointment_app/main.dart';
-import 'package:doctor_appointment_app/screens/doctor_details.dart';
+import 'package:doctor_appointment_app/screens/tutor_details.dart';
 import 'package:doctor_appointment_app/utils/config.dart';
 import 'package:flutter/material.dart';
 
@@ -28,7 +28,7 @@ class DoctorCard extends StatelessWidget {
               SizedBox(
                 width: Config.widthSize * 0.33,
                 child: Image.network(
-                  "http://127.0.0.1:8000${doctor['doctor_profile']}",
+                  Config.base_url + doctor['doctor_profile'],
                   fit: BoxFit.fill,
                 ),
               ),
@@ -40,7 +40,7 @@ class DoctorCard extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
                       Text(
-                        "Dr ${doctor['doctor_name']}",
+                        "Tutor ${doctor['doctor_name']}",
                         style: const TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.bold,

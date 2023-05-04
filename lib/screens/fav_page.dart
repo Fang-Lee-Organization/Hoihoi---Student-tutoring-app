@@ -1,4 +1,4 @@
-import "package:doctor_appointment_app/components/doctor_card.dart";
+import "package:doctor_appointment_app/components/tutor_card.dart";
 import "package:flutter/material.dart";
 import "package:provider/provider.dart";
 
@@ -20,7 +20,7 @@ class _FavPageState extends State<FavPage> {
         child: Column(
           children: [
             const Text(
-              'My Favorite Doctors',
+              'My Favorite Tutors',
               textAlign: TextAlign.center,
               style: TextStyle(
                 fontSize: 18,

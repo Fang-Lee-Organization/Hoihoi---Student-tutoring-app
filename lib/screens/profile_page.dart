@@ -2,6 +2,8 @@ import "package:doctor_appointment_app/main.dart";
 import "package:doctor_appointment_app/utils/config.dart";
 import "package:flutter/material.dart";
 import "package:shared_preferences/shared_preferences.dart";
+import 'package:provider/provider.dart';
+import 'package:doctor_appointment_app/models/auth_model.dart';
 
 import "../providers/dio_provider.dart";
 
@@ -13,8 +15,13 @@ class ProfilePage extends StatefulWidget {
 }
 
 class _ProfilePageState extends State<ProfilePage> {
+  Map<String, dynamic> user = {};
+
   @override
   Widget build(BuildContext context) {
+    Config().init(context);
+    user = Provider.of<AuthModel>(context, listen: false).getUser;
+
     return Column(
       children: [
         Expanded(
@@ -23,30 +30,32 @@ class _ProfilePageState extends State<ProfilePage> {
             width: double.infinity,
             color: Config.primaryColor,
             child: Column(
-              children: const <Widget>[
+              children: <Widget>[
                 SizedBox(
                   height: 110,
                 ),
                 CircleAvatar(
                   radius: 65.0,
-                  backgroundImage: AssetImage('assets/profile1.jpg'),
+                  backgroundImage:
+                      NetworkImage(Config.base_url + user['profile_photo_url']),
                   backgroundColor: Colors.white,
                 ),
                 SizedBox(
                   height: 10,
                 ),
                 Text(
-                  'Amanda Tan',
+                  user['name'],
                   style: TextStyle(
                     color: Colors.white,
-                    fontSize: 20,
+                    fontSize: 28,
+                    fontWeight: FontWeight.bold
                   ),
                 ),
                 SizedBox(
                   height: 10,
                 ),
                 Text(
-                  '23 Years Old | Female',
+                  user['bio_data'] != null ? user['bio_data'] : "Old school",
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 15,
@@ -85,7 +94,7 @@ class _ProfilePageState extends State<ProfilePage> {
                           children: [
                             Icon(
                               Icons.person,
-                              color: Colors.blueAccent[400],
+                              color: Colors.indigo,
                               size: 35,
                             ),
                             const SizedBox(
@@ -109,7 +118,7 @@ class _ProfilePageState extends State<ProfilePage> {
                           children: [
                             Icon(
                               Icons.history,
-                              color: Colors.yellowAccent[400],
+                              color: Color.fromRGBO(255, 227, 179, 1),
                               size: 35,
                             ),
                             const SizedBox(
@@ -133,7 +142,7 @@ class _ProfilePageState extends State<ProfilePage> {
                           children: [
                             Icon(
                               Icons.logout_outlined,
-                              color: Colors.lightGreen[400],
+                              color: Colors.orangeAccent,
                               size: 35,
                             ),
                             const SizedBox(

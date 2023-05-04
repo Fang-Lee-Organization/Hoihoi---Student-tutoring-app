@@ -122,13 +122,13 @@ class AboutDoctor extends StatelessWidget {
           CircleAvatar(
             radius: 65.0,
             backgroundImage: NetworkImage(
-              "http://127.0.0.1:8000${doctor['doctor_profile']}",
+              Config.base_url + doctor['doctor_profile'],
             ),
             backgroundColor: Colors.white,
           ),
           Config.spaceMedium,
           Text(
-            "Dr ${doctor['doctor_name']}",
+            "Tutor ${doctor['doctor_name']}",
             style: const TextStyle(
               color: Colors.black,
               fontSize: 24.0,
@@ -152,7 +152,7 @@ class AboutDoctor extends StatelessWidget {
           SizedBox(
             width: Config.widthSize * 0.75,
             child: const Text(
-              'Sarawak General Hospital',
+              'VKU',
               style: TextStyle(
                 color: Colors.black,
                 fontWeight: FontWeight.bold,
@@ -187,14 +187,14 @@ class DetailBody extends StatelessWidget {
           ),
           Config.spaceMedium,
           const Text(
-            'About Doctor',
+            'About Tutor',
             style: TextStyle(fontWeight: FontWeight.w600, fontSize: 18),
           ),
           Config.spaceSmall,
           Text(
-            'Dr. ${doctor['doctor_name']} is an experience ${doctor['category']} Specialist at Sarawak, graduated since 2008, and completed his/her training at Sungai Buloh General Hospital.',
+            '${doctor['doctor_name']} is an experience ${doctor['category']} Tutor, graduated since 2008, and completed his/her training at Tutor Academy.',
             style: const TextStyle(
-              fontWeight: FontWeight.w500,
+              // fontWeight: FontWeight.w500,
               height: 1.5,
             ),
             softWrap: true,

@@ -1,5 +1,5 @@
 import 'package:doctor_appointment_app/components/appointment_card.dart';
-import 'package:doctor_appointment_app/components/doctor_card.dart';
+import 'package:doctor_appointment_app/components/tutor_card.dart';
 import 'package:doctor_appointment_app/models/auth_model.dart';
 import 'package:doctor_appointment_app/utils/config.dart';
 import 'package:flutter/material.dart';
@@ -17,30 +17,30 @@ class _HomePageState extends State<HomePage> {
   Map<String, dynamic> user = {};
   Map<String, dynamic> doctor = {};
   List<dynamic> favList = [];
-  List<Map<String, dynamic>> medCat = [
+  List<Map<String, dynamic>> subjects = [
     {
-      "icon": FontAwesomeIcons.userDoctor,
-      "category": "General",
+      "icon": FontAwesomeIcons.calculator,
+      "category": "Math",
     },
     {
-      "icon": FontAwesomeIcons.heartPulse,
-      "category": "Cardiology",
+      "icon": FontAwesomeIcons.code,
+      "category": "Programming",
     },
     {
-      "icon": FontAwesomeIcons.lungs,
-      "category": "Respirations",
+      "icon": FontAwesomeIcons.bullhorn,
+      "category": "Marketing",
     },
     {
-      "icon": FontAwesomeIcons.hand,
-      "category": "Dermatology",
+      "icon": FontAwesomeIcons.plane,
+      "category": "Tourism",
     },
     {
-      "icon": FontAwesomeIcons.personPregnant,
-      "category": "Gynecology",
+      "icon": FontAwesomeIcons.coins,
+      "category": "Finance",
     },
     {
-      "icon": FontAwesomeIcons.teeth,
-      "category": "Dental",
+      "icon": FontAwesomeIcons.paintbrush,
+      "category": "Design",
     },
   ];
 
@@ -78,18 +78,17 @@ class _HomePageState extends State<HomePage> {
                               fontWeight: FontWeight.bold,
                             ),
                           ),
-                          const SizedBox(
+                          SizedBox(
                             child: CircleAvatar(
-                              radius: 30,
-                              backgroundImage:
-                                  AssetImage('assets/profile1.jpg'),
-                            ),
+                                radius: 30,
+                                backgroundImage: NetworkImage(Config.base_url +
+                                    user['profile_photo_url'])),
                           )
                         ],
                       ),
                       Config.spaceMedium,
                       const Text(
-                        'Category',
+                        'Subject',
                         style: TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.bold,
@@ -101,7 +100,7 @@ class _HomePageState extends State<HomePage> {
                         child: ListView(
                           scrollDirection: Axis.horizontal,
                           children:
-                              List<Widget>.generate(medCat.length, (index) {
+                              List<Widget>.generate(subjects.length, (index) {
                             return Card(
                               margin: const EdgeInsets.only(right: 20),
                               color: Config.primaryColor,
@@ -113,14 +112,14 @@ class _HomePageState extends State<HomePage> {
                                       MainAxisAlignment.spaceAround,
                                   children: <Widget>[
                                     FaIcon(
-                                      medCat[index]['icon'],
+                                      subjects[index]['icon'],
                                       color: Colors.white,
                                     ),
                                     const SizedBox(
                                       width: 20,
                                     ),
                                     Text(
-                                      medCat[index]['category'],
+                                      subjects[index]['category'],
                                       style: const TextStyle(
                                         fontSize: 16,
                                         color: Colors.white,
@@ -168,7 +167,7 @@ class _HomePageState extends State<HomePage> {
                             ),
                       Config.spaceSmall,
                       const Text(
-                        'Top Doctors',
+                        'Top Tutors',
                         style: TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.bold,

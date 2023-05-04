@@ -5,6 +5,7 @@ class Config {
   static MediaQueryData? mediaQueryData;
   static double? screenWidth;
   static double? screenHeight;
+  static String base_url = 'http://192.168.214.245:8000';
 
   //width and height initialization
   void init(BuildContext context) {
@@ -19,6 +20,10 @@ class Config {
 
   static get heightSize {
     return screenHeight;
+  }
+
+  static get baseURL {
+    return base_url;
   }
 
   //define spacing height
@@ -40,13 +45,13 @@ class Config {
   static const focusBorder = OutlineInputBorder(
       borderRadius: BorderRadius.all(Radius.circular(8)),
       borderSide: BorderSide(
-        color: Colors.greenAccent,
+        color: Colors.blueAccent,
       ));
   static const errorBorder = OutlineInputBorder(
       borderRadius: BorderRadius.all(Radius.circular(8)),
       borderSide: BorderSide(
-        color: Colors.red,
+        color: Colors.orangeAccent,
       ));
 
-  static const primaryColor = Colors.greenAccent;
+  static const primaryColor = Colors.blueAccent;
 }

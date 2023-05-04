@@ -35,8 +35,9 @@ class _AppointmentCardState extends State<AppointmentCard> {
               Row(
                 children: [
                   CircleAvatar(
-                    backgroundImage: NetworkImage(
-                        "http://127.0.0.1:8000${widget.doctor['doctor_profile']}"), //insert doctor profile
+                    backgroundImage: NetworkImage(Config.base_url +
+                        widget
+                            .doctor['doctor_profile']), //insert doctor profile
                   ),
                   const SizedBox(
                     width: 10,
@@ -46,15 +47,19 @@ class _AppointmentCardState extends State<AppointmentCard> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
                       Text(
-                        'Dr ${widget.doctor['doctor_name']}',
-                        style: const TextStyle(color: Colors.white),
+                        'Tutor: ${widget.doctor['doctor_name']}',
+                        style: const TextStyle(
+                            color: Colors.white,
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold),
                       ),
                       const SizedBox(
                         height: 2,
                       ),
                       Text(
-                        widget.doctor['category'],
-                        style: const TextStyle(color: Colors.black),
+                        'Subject: ${widget.doctor['category']}',
+                        style:
+                            const TextStyle(color: Colors.white, fontSize: 14),
                       )
                     ],
                   ),
@@ -73,8 +78,7 @@ class _AppointmentCardState extends State<AppointmentCard> {
                   Expanded(
                     child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.red,
-                      ),
+                          backgroundColor: Colors.indigo),
                       child: const Text(
                         'Cancel',
                         style: TextStyle(color: Colors.white),
@@ -88,7 +92,10 @@ class _AppointmentCardState extends State<AppointmentCard> {
                   Expanded(
                     child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.blue,
+                          backgroundColor: Colors.white),
+                      child: const Text(
+                        'Completed',
+                        style: TextStyle(color: Colors.indigo),
                       ),
                       onPressed: () {
                         showDialog(
@@ -97,7 +104,7 @@ class _AppointmentCardState extends State<AppointmentCard> {
                               return RatingDialog(
                                   initialRating: 1.0,
                                   title: const Text(
-                                    'Rate the Doctor',
+                                    'Rate the Tutor',
                                     textAlign: TextAlign.center,
                                     style: TextStyle(
                                       fontSize: 25,
@@ -105,7 +112,7 @@ class _AppointmentCardState extends State<AppointmentCard> {
                                     ),
                                   ),
                                   message: const Text(
-                                    'Please help us to rate our Doctor',
+                                    'Please help us to rate our Tutor',
                                     textAlign: TextAlign.center,
                                     style: TextStyle(
                                       fontSize: 15,
@@ -140,10 +147,6 @@ class _AppointmentCardState extends State<AppointmentCard> {
                                   });
                             });
                       },
-                      child: const Text(
-                        'Completed',
-                        style: TextStyle(color: Colors.white),
-                      ),
                     ),
                   ),
                 ],
@@ -164,26 +167,26 @@ class ScheduleCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: BoxDecoration(
-        color: Colors.grey,
-        borderRadius: BorderRadius.circular(10),
-      ),
+      // decoration: BoxDecoration(
+      //   color: Color.fromRGBO(255, 227, 179, 1),
+      //   borderRadius: BorderRadius.circular(10),
+      // ),
       width: double.infinity,
-      padding: const EdgeInsets.all(20),
+      padding: const EdgeInsets.all(10),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
           const Icon(
             Icons.calendar_today,
             color: Colors.white,
-            size: 15,
+            size: 20,
           ),
           const SizedBox(
             width: 5,
           ),
           Text(
             '${appointment['day']}, ${appointment['date']}',
-            style: const TextStyle(color: Colors.white),
+            style: const TextStyle(color: Colors.white, fontSize: 18),
           ),
           const SizedBox(
             width: 20,
@@ -191,7 +194,7 @@ class ScheduleCard extends StatelessWidget {
           const Icon(
             Icons.access_alarm,
             color: Colors.white,
-            size: 17,
+            size: 20,
           ),
           const SizedBox(
             width: 5,
@@ -199,7 +202,7 @@ class ScheduleCard extends StatelessWidget {
           Flexible(
               child: Text(
             appointment['time'],
-            style: const TextStyle(color: Colors.white),
+            style: const TextStyle(color: Colors.white, fontSize: 18),
           ))
         ],
       ),

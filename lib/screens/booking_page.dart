@@ -41,7 +41,7 @@ class _BookingPageState extends State<BookingPage> {
   @override
   Widget build(BuildContext context) {
     Config().init(context);
-    final doctor = ModalRoute.of(context)!.settings.arguments as Map;
+    final tutor = ModalRoute.of(context)!.settings.arguments as Map;
     return Scaffold(
       appBar: CustomAppBar(
         appTitle: 'Appointment',
@@ -138,7 +138,7 @@ class _BookingPageState extends State<BookingPage> {
                   final getTime = DateConverted.getTime(_currentIndex!);
 
                   final booking = await DioProvider().bookAppointment(
-                      getDate, getDay, getTime, doctor['doctor_id'], token!);
+                      getDate, getDay, getTime, tutor['doctor_id'], token!);
 
                   //if booking return status code 200, then redirect to success booking page
 
