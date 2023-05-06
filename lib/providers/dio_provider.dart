@@ -10,7 +10,6 @@ class DioProvider {
   //get token
   Future<dynamic> getToken(String email, String password) async {
     try {
-      //My IPv4 address
       var response = await Dio().post('${Config.baseURL}/api/login',
           data: {'email': email, 'password': password}
           // options: Options(headers: {
@@ -92,7 +91,7 @@ class DioProvider {
           options: Options(headers: {'Authorization': 'Bearer $token'}));
 
       if (response.statusCode == 200 && response.data != '') {
-        print(json.encode(response.data));
+        // print(json.encode(response.data));
         return json.encode(response.data);
       } else {
         return 'Error';
@@ -103,11 +102,26 @@ class DioProvider {
     }
   }
 
+  Future<dynamic> cancelAppointment(int id, String token) async {
+    try {
+      var response = await Dio().post('${Config.baseURL}/api/cancel',
+          data: {'appointment_id': id},
+          options: Options(headers: {'Authorization': 'Bearer $token'}));
+      if (response.statusCode == 200 && response.data != '') {
+        return response.statusCode;
+      }
+      return 'Error';
+    } catch (error) {
+      print(error);
+      return false;
+    }
+  }
+
   //store rating details
   Future<dynamic> storeReviews(
       String reviews, double ratings, int id, int doctor, String token) async {
     try {
-      var response = await Dio().post('${Config.baseURL}/api/reviews',
+      var response = await Dio().post('${Config.baseURL}/api/review',
           data: {
             'ratings': ratings,
             'reviews': reviews,

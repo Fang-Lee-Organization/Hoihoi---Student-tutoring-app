@@ -21,6 +21,7 @@ class _ProfilePageState extends State<ProfilePage> {
   Widget build(BuildContext context) {
     Config().init(context);
     user = Provider.of<AuthModel>(context, listen: false).getUser;
+    print(user);
 
     return Column(
       children: [
@@ -46,16 +47,16 @@ class _ProfilePageState extends State<ProfilePage> {
                 Text(
                   user['name'],
                   style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 28,
-                    fontWeight: FontWeight.bold
-                  ),
+                      color: Colors.white,
+                      fontSize: 28,
+                      fontWeight: FontWeight.bold),
                 ),
                 SizedBox(
                   height: 10,
                 ),
                 Text(
-                  user['bio_data'] != null ? user['bio_data'] : "Old school",
+                  "${user['bio_data'] ?? "Old school"}",
+                  // check null ?? default value
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 15,

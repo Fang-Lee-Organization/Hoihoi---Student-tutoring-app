@@ -23,7 +23,7 @@ class _BookingPageState extends State<BookingPage> {
   DateTime _currentDay = DateTime.now();
   int? _currentIndex;
   bool _isWeekend = false;
-  bool _dateSelected = false;
+  bool _dateSelected = true;
   bool _timeSelected = false;
   String? token; //get token for insert booking date and time into database
 
@@ -57,7 +57,7 @@ class _BookingPageState extends State<BookingPage> {
                   padding: EdgeInsets.symmetric(horizontal: 10, vertical: 25),
                   child: Center(
                     child: Text(
-                      'Select Consultation Time',
+                      'Select Appointment Time',
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 20,
@@ -184,8 +184,9 @@ class _BookingPageState extends State<BookingPage> {
           _dateSelected = true;
 
           //check if weekend is selected
-          if (selectedDay.weekday == 6 || selectedDay.weekday == 7) {
+          if (selectedDay.weekday == 7) {
             _isWeekend = true;
+            _dateSelected = false;
             _timeSelected = false;
             _currentIndex = null;
           } else {

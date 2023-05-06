@@ -1,5 +1,6 @@
 import 'package:doctor_appointment_app/main_layout.dart';
 import 'package:doctor_appointment_app/models/auth_model.dart';
+import 'package:doctor_appointment_app/screens/appointment_page.dart';
 import 'package:doctor_appointment_app/screens/auth_page.dart';
 import 'package:doctor_appointment_app/screens/booking_page.dart';
 import 'package:doctor_appointment_app/screens/success_booked.dart';
@@ -24,7 +25,7 @@ class MyApp extends StatelessWidget {
       create: (context) => AuthModel(),
       child: MaterialApp(
         navigatorKey: navigatorKey,
-        title: 'Flutter Doctor App',
+        title: 'HoiHoi - Find tutor near you',
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
           //pre-define input decoration
@@ -54,6 +55,7 @@ class MyApp extends StatelessWidget {
           'main': (context) => const MainLayout(),
           'booking_page': (context) => BookingPage(),
           'success_booking': (context) => const AppointmentBooked(),
+          'appointment': (context) => const AppointmentPage()
         },
       ),
     );

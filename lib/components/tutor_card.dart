@@ -56,16 +56,16 @@ class DoctorCard extends StatelessWidget {
                       const Spacer(),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.start,
-                        children: const <Widget>[
-                          Icon(
-                            Icons.star_border,
-                            color: Colors.yellow,
-                            size: 16,
-                          ),
+                        children: <Widget>[
+                          Text("${doctor['doctor_rating']}"),
                           Spacer(
                             flex: 1,
                           ),
-                          Text('4.5'),
+                          Icon(
+                            Icons.star,
+                            color: Colors.yellow,
+                            size: 16,
+                          ),
                           Spacer(
                             flex: 1,
                           ),
@@ -73,7 +73,7 @@ class DoctorCard extends StatelessWidget {
                           Spacer(
                             flex: 1,
                           ),
-                          Text('(20)'),
+                          Text("(${doctor['doctor_review']})"),
                           Spacer(
                             flex: 7,
                           ),

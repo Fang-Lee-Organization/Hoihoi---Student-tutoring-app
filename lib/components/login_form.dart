@@ -94,6 +94,7 @@ class _LoginFormState extends State<LoginForm> {
                     if (tokenValue.isNotEmpty && tokenValue != '') {
                       //get user data
                       final response = await DioProvider().getUser(tokenValue);
+
                       if (response != null) {
                         setState(() {
                           //json decode
@@ -104,18 +105,17 @@ class _LoginFormState extends State<LoginForm> {
                           for (var doctorData in user['doctor']) {
                             //if there is appointment return for today
 
-                            if (doctorData['appointments'] != null) {
+                            if (doctorData['date'] != null) {
                               appointment = doctorData;
                             }
                           }
 
-                          auth.loginSuccess(user, appointment);
+                          auth.loginSuccess(user, tokenValue);
                           MyApp.navigatorKey.currentState!.pushNamed('main');
                         });
                       }
                     }
-                  }
-                  else{
+                  } else {
                     print(token);
                   }
                 },

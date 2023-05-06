@@ -20,6 +20,7 @@ class _SignUpFormState extends State<SignUpForm> {
   final _emailController = TextEditingController();
   final _passController = TextEditingController();
   bool obsecurePass = true;
+
   @override
   Widget build(BuildContext context) {
     return Form(
@@ -98,7 +99,7 @@ class _SignUpFormState extends State<SignUpForm> {
                         .getToken(_emailController.text, _passController.text);
 
                     if (token) {
-                      auth.loginSuccess({}, {}); //update login status
+                      auth.loginSuccess({}, token); //update login status
                       //redirect to main page
                       MyApp.navigatorKey.currentState!.pushNamed('main');
                     }

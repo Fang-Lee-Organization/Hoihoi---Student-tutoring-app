@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:doctor_appointment_app/components/appointment_card.dart';
 import 'package:doctor_appointment_app/components/tutor_card.dart';
 import 'package:doctor_appointment_app/models/auth_model.dart';
@@ -5,6 +7,9 @@ import 'package:doctor_appointment_app/utils/config.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
+import '../providers/dio_provider.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -15,7 +20,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   Map<String, dynamic> user = {};
-  Map<String, dynamic> doctor = {};
+  Map<String, dynamic> bookedAppointment = {};
   List<dynamic> favList = [];
   List<Map<String, dynamic>> subjects = [
     {
@@ -47,8 +52,10 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     Config().init(context);
+
     user = Provider.of<AuthModel>(context, listen: false).getUser;
-    doctor = Provider.of<AuthModel>(context, listen: false).getAppointment;
+    bookedAppointment =
+        Provider.of<AuthModel>(context, listen: false).getFirstAppointment;
     favList = Provider.of<AuthModel>(context, listen: false).getFav;
 
     return Scaffold(
@@ -134,37 +141,41 @@ class _HomePageState extends State<HomePage> {
                       ),
                       Config.spaceSmall,
                       const Text(
-                        'Appointment Today',
+                        'Appointment Booked',
                         style: TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
                       Config.spaceSmall,
-                      doctor.isNotEmpty
-                          ? AppointmentCard(
-                              doctor: doctor,
+                      Consumer<AuthModel>(builder: (context, auth, child) {
+                        var app = auth.getFirstAppointment;
+                        if (app.isNotEmpty) {
+                          return AppointmentCard(
+                              app: app,
                               color: Config.primaryColor,
-                            )
-                          : Container(
-                              width: double.infinity,
-                              decoration: BoxDecoration(
-                                color: Colors.grey.shade300,
-                                borderRadius: BorderRadius.circular(10),
-                              ),
-                              child: const Center(
-                                child: Padding(
-                                  padding: EdgeInsets.all(20),
-                                  child: Text(
-                                    'No Appointment Today',
-                                    style: TextStyle(
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.w600,
-                                    ),
-                                  ),
+                              isBooked: true);
+                        }
+                        return Container(
+                          width: double.infinity,
+                          decoration: BoxDecoration(
+                            color: Colors.grey.shade300,
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          child: const Center(
+                            child: Padding(
+                              padding: EdgeInsets.all(20),
+                              child: Text(
+                                'No Appointment Booked',
+                                style: TextStyle(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w600,
                                 ),
                               ),
                             ),
+                          ),
+                        );
+                      }),
                       Config.spaceSmall,
                       const Text(
                         'Top Tutors',
