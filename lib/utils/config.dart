@@ -28,7 +28,7 @@ class Config {
 
   //define spacing height
   static const spaceSmall = SizedBox(
-    height: 25,
+    height: 18,
   );
   static final spaceMedium = SizedBox(
     height: screenHeight! * 0.05,
@@ -54,4 +54,6 @@ class Config {
       ));
 
   static const primaryColor = Colors.blueAccent;
+  static const secondaryColor = Colors.orangeAccent;
+
 }

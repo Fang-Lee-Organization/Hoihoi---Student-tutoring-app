@@ -32,8 +32,8 @@ class _AppointmentPageState extends State<AppointmentPage> {
   Widget build(BuildContext context) {
     Config().init(context);
 
-    List<dynamic> filteredAppointments =
-        Provider.of<AuthModel>(context, listen: false).getFilteredAppointments;
+    // List<dynamic> filteredAppointments =
+    //     Provider.of<AuthModel>(context, listen: false).getFilteredAppointments;
 
     return SafeArea(
       child: Consumer<AuthModel>(builder: (context, auth, child) {

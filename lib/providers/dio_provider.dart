@@ -123,10 +123,10 @@ class DioProvider {
     try {
       var response = await Dio().post('${Config.baseURL}/api/review',
           data: {
-            'ratings': ratings,
-            'reviews': reviews,
             'appointment_id': id,
-            'doctor_id': doctor
+            'doctor_id': doctor,
+            'ratings': ratings,
+            'reviews': reviews
           },
           options: Options(headers: {'Authorization': 'Bearer $token'}));
 
@@ -138,6 +138,22 @@ class DioProvider {
     } catch (error) {
       print(error);
       return false;
+    }
+  }
+
+  Future<dynamic> getReviews(String token) async {
+    try {
+      var response = await Dio().get('${Config.baseURL}/api/get-reviews',
+          options: Options(headers: {'Authorization': 'Bearer $token'}));
+
+      if (response.statusCode == 200 && response.data != '') {
+        return json.encode(response.data);
+      } else {
+        return 'Error';
+      }
+    } catch (error) {
+      print(error);
+      return 'Error';
     }
   }
 

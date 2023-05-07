@@ -2,6 +2,9 @@ import 'package:doctor_appointment_app/main.dart';
 import 'package:doctor_appointment_app/screens/tutor_details.dart';
 import 'package:doctor_appointment_app/utils/config.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import '../models/auth_model.dart';
 
 class DoctorCard extends StatelessWidget {
   const DoctorCard({
@@ -87,6 +90,8 @@ class DoctorCard extends StatelessWidget {
           ),
         ),
         onTap: () {
+          Provider.of<AuthModel>(context, listen: false)
+              .setFilteredReviews(doctor['doc_id']);
           //pass the details to detail page
           MyApp.navigatorKey.currentState!.push(MaterialPageRoute(
               builder: (_) => DoctorDetails(

@@ -1,4 +1,5 @@
 import 'package:doctor_appointment_app/components/button.dart';
+import 'package:doctor_appointment_app/components/comment_card.dart';
 import 'package:doctor_appointment_app/models/auth_model.dart';
 import 'package:doctor_appointment_app/providers/dio_provider.dart';
 import 'package:doctor_appointment_app/utils/config.dart';
@@ -26,17 +27,20 @@ class _DoctorDetailsState extends State<DoctorDetails> {
   void initState() {
     doctor = widget.doctor;
     isFav = widget.isFav;
+
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
+    Config().init(context);
+
     return Scaffold(
       appBar: CustomAppBar(
         appTitle: 'Doctor Details',
-        icon: const FaIcon(Icons.arrow_back_ios),
+        icon: const FaIcon(Icons.arrow_back_ios_new),
         actions: [
-          //Favarite Button
+          //Favorite Button
           IconButton(
             //press this button to add/remove favorite doctor
             onPressed: () async {
@@ -114,7 +118,6 @@ class AboutDoctor extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Config().init(context);
     return Container(
       width: double.infinity,
       child: Column(
@@ -126,7 +129,7 @@ class AboutDoctor extends StatelessWidget {
             ),
             backgroundColor: Colors.white,
           ),
-          Config.spaceMedium,
+          Config.spaceSmall,
           Text(
             "Tutor ${doctor['doctor_name']}",
             style: const TextStyle(
@@ -205,6 +208,18 @@ class DetailBody extends StatelessWidget {
             'Reviews',
             style: TextStyle(fontWeight: FontWeight.w600, fontSize: 18),
           ),
+          Config.spaceSmall,
+          Consumer<AuthModel>(builder: (context, auth, child) {
+            return SizedBox(
+                height: 100,
+                child: ListView.builder(
+                    scrollDirection: Axis.vertical,
+                    itemCount: auth.getFilteredReviews.length,
+                    itemBuilder: ((context, index) {
+                      var review = auth.getFilteredReviews[index];
+                      return CommentCard(review: review, color: Colors.white);
+                    })));
+          })
         ],
       ),
     );

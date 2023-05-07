@@ -59,8 +59,7 @@ class _AppointmentCardState extends State<AppointmentCard> {
                   children: [
                     CircleAvatar(
                       backgroundImage: NetworkImage(Config.base_url +
-                          widget.app[
-                              'doctor_profile']), //insert doctor profile
+                          widget.app['doctor_profile']), //insert doctor profile
                     ),
                     const SizedBox(
                       width: 10,
@@ -180,7 +179,10 @@ class _AppointmentCardState extends State<AppointmentCard> {
                                             if (context.mounted) {
                                               Provider.of<AuthModel>(context,
                                                       listen: false)
-                                                  .refreshAppointment(token!);
+                                                  .refreshAppointment(token);
+                                              Provider.of<AuthModel>(context,
+                                                      listen: false)
+                                                  .refreshReview(token);
                                             }
 
                                             // if (rating == 200 && rating != '') {

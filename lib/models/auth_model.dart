@@ -15,8 +15,10 @@ class AuthModel extends ChangeNotifier {
   List<dynamic> _fav = []; //get all fav doctor id in list
 
   List<dynamic> appointments = [];
-
   List<dynamic> filteredAppointments = [];
+
+  List<dynamic> reviews = [];
+  List<dynamic> filteredReviews = [];
 
   bool get isLogin {
     return _isLogin;
@@ -71,17 +73,28 @@ class AuthModel extends ChangeNotifier {
     return filteredAppointments;
   }
 
+  void setFilteredReviews(int id) {
+    filteredReviews = reviews.where((var review) {
+      return review['doc_id'] == id;
+    }).toList();
+
+    notifyListeners();
+  }
+
+  List<dynamic> get getFilteredReviews {
+    return filteredReviews;
+  }
+
 //when login success, update the status
   void loginSuccess(Map<String, dynamic> userData, String token) {
     _isLogin = true;
-
     //update all these data when login
     user = userData;
     if (user['details']['fav'] != null) {
       _fav = json.decode(user['details']['fav']);
     }
-
     refreshAppointment(token);
+    refreshReview(token);
 
     notifyListeners();
   }
@@ -98,6 +111,13 @@ class AuthModel extends ChangeNotifier {
       }
     }
     setFilteredAppointments();
+
+    notifyListeners();
+  }
+
+  Future<void> refreshReview(String token) async {
+    var encodedReviews = await DioProvider().getReviews(token);
+    reviews = json.decode(encodedReviews);
 
     notifyListeners();
   }
