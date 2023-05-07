@@ -66,7 +66,7 @@ class DoctorCard extends StatelessWidget {
                           ),
                           Icon(
                             Icons.star,
-                            color: Colors.yellow,
+                            color: Colors.orange,
                             size: 16,
                           ),
                           Spacer(
