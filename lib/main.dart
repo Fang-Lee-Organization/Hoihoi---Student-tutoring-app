@@ -7,10 +7,15 @@ import 'package:doctor_appointment_app/screens/success_booked.dart';
 import 'package:doctor_appointment_app/utils/config.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_google_places/flutter_google_places.dart';
+import 'package:google_maps_webservice/places.dart';
 
 void main() {
   runApp(const MyApp());
 }
+
+const googleApiKey = 'AIzaSyD1sRLh3eYI2svfLJ0hreKM5Yr7gEjOUxA';
+GoogleMapsPlaces places = GoogleMapsPlaces(apiKey: googleApiKey);
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});

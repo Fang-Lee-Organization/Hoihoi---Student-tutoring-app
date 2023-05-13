@@ -88,8 +88,12 @@ class _HomePageState extends State<HomePage> {
                           SizedBox(
                             child: CircleAvatar(
                                 radius: 30,
-                                backgroundImage: NetworkImage(Config.base_url +
-                                    user['profile_photo_url'])),
+                                backgroundImage: NetworkImage(user[
+                                            'profile_photo_url'] ==
+                                        null
+                                    ? Config.base_url +
+                                        user['profile_photo_url']
+                                    : 'https://img.icons8.com/ultraviolet/80/test-account.png')),
                           )
                         ],
                       ),
@@ -185,18 +189,21 @@ class _HomePageState extends State<HomePage> {
                         ),
                       ),
                       Config.spaceSmall,
-                      Column(
-                        children: List.generate(user['doctor'].length, (index) {
-                          return DoctorCard(
-                            doctor: user['doctor'][index],
-                            //if lates fav list contains particular doctor id, then show fav icon
-                            isFav: favList
-                                    .contains(user['doctor'][index]['doc_id'])
-                                ? true
-                                : false,
-                          );
-                        }),
-                      ),
+                      Consumer<AuthModel>(builder: (context, auth, child) {
+                        return Column(
+                          children: List.generate(auth.getUser['doctor'].length,
+                              (index) {
+                            return DoctorCard(
+                              doctor: auth.getUser['doctor'][index],
+                              //if lates fav list contains particular doctor id, then show fav icon
+                              isFav: favList.contains(
+                                      auth.getUser['doctor'][index]['doc_id'])
+                                  ? true
+                                  : false,
+                            );
+                          }),
+                        );
+                      }),
                     ],
                   ),
                 ),

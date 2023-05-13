@@ -5,7 +5,7 @@ class Config {
   static MediaQueryData? mediaQueryData;
   static double? screenWidth;
   static double? screenHeight;
-  static String base_url = 'http://192.168.214.245:8000';
+  static String base_url = 'http://192.168.209.245:8000';
 
   //width and height initialization
   void init(BuildContext context) {
@@ -55,5 +55,4 @@ class Config {
 
   static const primaryColor = Colors.blueAccent;
   static const secondaryColor = Colors.orangeAccent;
-
 }

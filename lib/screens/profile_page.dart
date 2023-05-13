@@ -21,7 +21,6 @@ class _ProfilePageState extends State<ProfilePage> {
   Widget build(BuildContext context) {
     Config().init(context);
     user = Provider.of<AuthModel>(context, listen: false).getUser;
-    print(user);
 
     return Column(
       children: [
@@ -37,8 +36,10 @@ class _ProfilePageState extends State<ProfilePage> {
                 ),
                 CircleAvatar(
                   radius: 65.0,
-                  backgroundImage:
-                      NetworkImage(Config.base_url + user['profile_photo_url']),
+                  backgroundImage: NetworkImage(user['profile_photo_url'] ==
+                          null
+                      ? Config.base_url + user['profile_photo_url']
+                      : 'https://img.icons8.com/ultraviolet/80/test-account.png'),
                   backgroundColor: Colors.white,
                 ),
                 SizedBox(

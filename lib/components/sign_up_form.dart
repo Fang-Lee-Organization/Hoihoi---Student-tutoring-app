@@ -1,9 +1,12 @@
+import 'dart:convert';
+
 import 'package:doctor_appointment_app/components/button.dart';
 import 'package:doctor_appointment_app/main.dart';
 import 'package:doctor_appointment_app/models/auth_model.dart';
 import 'package:doctor_appointment_app/providers/dio_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../utils/config.dart';
 
@@ -99,9 +102,39 @@ class _SignUpFormState extends State<SignUpForm> {
                         .getToken(_emailController.text, _passController.text);
 
                     if (token) {
-                      auth.loginSuccess({}, token); //update login status
-                      //redirect to main page
-                      MyApp.navigatorKey.currentState!.pushNamed('main');
+                      //auth.loginSuccess(); //update login status
+                      //MyApp.navigatorKey.currentState!.pushNamed('main'); //redirect to main page
+
+                      //grab user data here
+                      final SharedPreferences prefs =
+                          await SharedPreferences.getInstance();
+                      final tokenValue = prefs.getString('token') ?? '';
+
+                      if (tokenValue.isNotEmpty && tokenValue != '') {
+                        //get user data
+                        final response =
+                            await DioProvider().getUser(tokenValue);
+
+                        if (response != null) {
+                          setState(() {
+                            //json decode
+                            Map<String, dynamic> appointment = {};
+                            final user = json.decode(response);
+
+                            //check if any appointment today
+                            for (var doctorData in user['doctor']) {
+                              //if there is appointment return for today
+
+                              if (doctorData['date'] != null) {
+                                appointment = doctorData;
+                              }
+                            }
+
+                            auth.loginSuccess(user, tokenValue);
+                            MyApp.navigatorKey.currentState!.pushNamed('main');
+                          });
+                        }
+                      }
                     }
                   } else {
                     print('register not successful');

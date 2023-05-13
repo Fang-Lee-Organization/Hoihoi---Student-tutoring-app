@@ -169,7 +169,7 @@ class _AppointmentCardState extends State<AppointmentCard> {
                                             final rating = await DioProvider()
                                                 .storeReviews(
                                                     response.comment,
-                                                    response.rating,
+                                                    response.rating.toDouble(),
                                                     widget.app['id'],
                                                     //this is appointment id
                                                     widget.app['doc_id'],

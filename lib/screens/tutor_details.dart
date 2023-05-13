@@ -187,7 +187,7 @@ class DetailBody extends StatelessWidget {
           DoctorInfo(
               patients: doctor['patients'],
               exp: doctor['experience'],
-              rating: doctor['doctor_rating']),
+              rating: doctor['doctor_rating'].toDouble()),
           Config.spaceMedium,
           const Text(
             'About Tutor',
