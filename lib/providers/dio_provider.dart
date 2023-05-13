@@ -66,11 +66,17 @@ class DioProvider {
   }
 
   //store booking details
-  Future<dynamic> bookAppointment(
-      String date, String day, String time, int doctor, String token) async {
+  Future<dynamic> bookAppointment(String date, String day, String time,
+      String location, int doctor, String token) async {
     try {
       var response = await Dio().post('${Config.baseURL}/api/book',
-          data: {'date': date, 'day': day, 'time': time, 'doctor_id': doctor},
+          data: {
+            'date': date,
+            'day': day,
+            'time': time,
+            'location': location,
+            'doctor_id': doctor
+          },
           options: Options(headers: {'Authorization': 'Bearer $token'}));
 
       if (response.statusCode == 200 && response.data != '') {
