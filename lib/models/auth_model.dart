@@ -1,5 +1,5 @@
 import 'dart:convert';
-import 'package:doctor_appointment_app/screens/appointment_page.dart';
+import 'package:Hoihoi/screens/appointment_page.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../providers/dio_provider.dart';

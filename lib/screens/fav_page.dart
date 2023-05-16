@@ -1,4 +1,4 @@
-import "package:doctor_appointment_app/components/tutor_card.dart";
+import "package:Hoihoi/components/tutor_card.dart";
 import "package:flutter/material.dart";
 import "package:provider/provider.dart";
 

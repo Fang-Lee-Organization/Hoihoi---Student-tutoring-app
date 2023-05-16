@@ -1,18 +1,21 @@
-import 'package:doctor_appointment_app/components/button.dart';
-import 'package:doctor_appointment_app/components/custom_appbar.dart';
-import 'package:doctor_appointment_app/main.dart';
-import 'package:doctor_appointment_app/models/booking_datetime_converted.dart';
-import 'package:doctor_appointment_app/providers/dio_provider.dart';
-import 'package:doctor_appointment_app/utils/config.dart';
+import 'package:Hoihoi/components/button.dart';
+import 'package:Hoihoi/components/custom_appbar.dart';
+import 'package:Hoihoi/main.dart';
+import 'package:Hoihoi/models/booking_datetime_converted.dart';
+import 'package:Hoihoi/providers/dio_provider.dart';
+import 'package:Hoihoi/utils/config.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_google_places/flutter_google_places.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:awesome_snackbar_content/awesome_snackbar_content.dart';
+import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:table_calendar/table_calendar.dart';
 import 'package:google_maps_webservice/places.dart';
 import 'package:google_api_headers/google_api_headers.dart';
+
+import '../models/auth_model.dart';
 
 class BookingPage extends StatefulWidget {
   BookingPage({Key? key}) : super(key: key);
@@ -242,6 +245,9 @@ class _BookingPageState extends State<BookingPage> {
                     //if booking return status code 200, then redirect to success booking page
 
                     if (booking == 200) {
+                      Provider.of<AuthModel>(context, listen: false)
+                          .refreshAppointment(token!);
+
                       MyApp.navigatorKey.currentState!
                           .pushNamed('success_booking');
                     }

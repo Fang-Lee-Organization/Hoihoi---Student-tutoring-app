@@ -1,5 +1,5 @@
-import 'package:doctor_appointment_app/providers/dio_provider.dart';
-import 'package:doctor_appointment_app/utils/config.dart';
+import 'package:Hoihoi/providers/dio_provider.dart';
+import 'package:Hoihoi/utils/config.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';

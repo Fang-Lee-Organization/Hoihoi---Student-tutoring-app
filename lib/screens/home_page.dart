@@ -1,9 +1,9 @@
 import 'dart:convert';
 
-import 'package:doctor_appointment_app/components/appointment_card.dart';
-import 'package:doctor_appointment_app/components/tutor_card.dart';
-import 'package:doctor_appointment_app/models/auth_model.dart';
-import 'package:doctor_appointment_app/utils/config.dart';
+import 'package:Hoihoi/components/appointment_card.dart';
+import 'package:Hoihoi/components/tutor_card.dart';
+import 'package:Hoihoi/models/auth_model.dart';
+import 'package:Hoihoi/utils/config.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';

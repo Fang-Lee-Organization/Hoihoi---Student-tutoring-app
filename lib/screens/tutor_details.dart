@@ -1,8 +1,8 @@
-import 'package:doctor_appointment_app/components/button.dart';
-import 'package:doctor_appointment_app/components/comment_card.dart';
-import 'package:doctor_appointment_app/models/auth_model.dart';
-import 'package:doctor_appointment_app/providers/dio_provider.dart';
-import 'package:doctor_appointment_app/utils/config.dart';
+import 'package:Hoihoi/components/button.dart';
+import 'package:Hoihoi/components/comment_card.dart';
+import 'package:Hoihoi/models/auth_model.dart';
+import 'package:Hoihoi/providers/dio_provider.dart';
+import 'package:Hoihoi/utils/config.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
@@ -37,7 +37,7 @@ class _DoctorDetailsState extends State<DoctorDetails> {
 
     return Scaffold(
       appBar: CustomAppBar(
-        appTitle: 'Doctor Details',
+        appTitle: 'Tutor Details',
         icon: const FaIcon(Icons.arrow_back_ios_new),
         actions: [
           //Favorite Button
@@ -289,7 +289,7 @@ class InfoCard extends StatelessWidget {
             Text(
               label,
               style: const TextStyle(
-                color: Colors.black,
+                color: Colors.white,
                 fontSize: 12,
                 fontWeight: FontWeight.w600,
               ),

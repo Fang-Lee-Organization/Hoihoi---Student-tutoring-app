@@ -1,6 +1,6 @@
-import 'package:doctor_appointment_app/main.dart';
-import 'package:doctor_appointment_app/screens/tutor_details.dart';
-import 'package:doctor_appointment_app/utils/config.dart';
+import 'package:Hoihoi/main.dart';
+import 'package:Hoihoi/screens/tutor_details.dart';
+import 'package:Hoihoi/utils/config.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 

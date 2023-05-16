@@ -1,9 +1,9 @@
-import "package:doctor_appointment_app/main.dart";
-import "package:doctor_appointment_app/utils/config.dart";
+import "package:Hoihoi/main.dart";
+import "package:Hoihoi/utils/config.dart";
 import "package:flutter/material.dart";
 import "package:shared_preferences/shared_preferences.dart";
 import 'package:provider/provider.dart';
-import 'package:doctor_appointment_app/models/auth_model.dart';
+import 'package:Hoihoi/models/auth_model.dart';
 
 import "../providers/dio_provider.dart";
 

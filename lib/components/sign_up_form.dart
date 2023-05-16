@@ -1,9 +1,9 @@
 import 'dart:convert';
 
-import 'package:doctor_appointment_app/components/button.dart';
-import 'package:doctor_appointment_app/main.dart';
-import 'package:doctor_appointment_app/models/auth_model.dart';
-import 'package:doctor_appointment_app/providers/dio_provider.dart';
+import 'package:Hoihoi/components/button.dart';
+import 'package:Hoihoi/main.dart';
+import 'package:Hoihoi/models/auth_model.dart';
+import 'package:Hoihoi/providers/dio_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';

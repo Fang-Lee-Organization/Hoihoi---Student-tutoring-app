@@ -1,7 +1,7 @@
-import 'package:doctor_appointment_app/screens/appointment_page.dart';
-import 'package:doctor_appointment_app/screens/fav_page.dart';
-import 'package:doctor_appointment_app/screens/home_page.dart';
-import 'package:doctor_appointment_app/screens/profile_page.dart';
+import 'package:Hoihoi/screens/appointment_page.dart';
+import 'package:Hoihoi/screens/fav_page.dart';
+import 'package:Hoihoi/screens/home_page.dart';
+import 'package:Hoihoi/screens/profile_page.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 

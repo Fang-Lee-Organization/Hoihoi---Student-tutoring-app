@@ -1,10 +1,10 @@
-import 'package:doctor_appointment_app/main_layout.dart';
-import 'package:doctor_appointment_app/models/auth_model.dart';
-import 'package:doctor_appointment_app/screens/appointment_page.dart';
-import 'package:doctor_appointment_app/screens/auth_page.dart';
-import 'package:doctor_appointment_app/screens/booking_page.dart';
-import 'package:doctor_appointment_app/screens/success_booked.dart';
-import 'package:doctor_appointment_app/utils/config.dart';
+import 'package:Hoihoi/main_layout.dart';
+import 'package:Hoihoi/models/auth_model.dart';
+import 'package:Hoihoi/screens/appointment_page.dart';
+import 'package:Hoihoi/screens/auth_page.dart';
+import 'package:Hoihoi/screens/booking_page.dart';
+import 'package:Hoihoi/screens/success_booked.dart';
+import 'package:Hoihoi/utils/config.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_google_places/flutter_google_places.dart';

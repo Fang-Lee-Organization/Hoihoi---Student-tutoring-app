@@ -1,6 +1,6 @@
-import 'package:doctor_appointment_app/main.dart';
-import 'package:doctor_appointment_app/providers/dio_provider.dart';
-import 'package:doctor_appointment_app/utils/config.dart';
+import 'package:Hoihoi/main.dart';
+import 'package:Hoihoi/providers/dio_provider.dart';
+import 'package:Hoihoi/utils/config.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:rating_dialog/rating_dialog.dart';
@@ -176,7 +176,7 @@ class _AppointmentCardState extends State<AppointmentCard> {
                                                     //this is doctor id
                                                     token);
                                             //if successful, then refresh
-                                            if (context.mounted) {
+                                            if (rating == 200 && rating != '') {
                                               Provider.of<AuthModel>(context,
                                                       listen: false)
                                                   .refreshAppointment(token);
