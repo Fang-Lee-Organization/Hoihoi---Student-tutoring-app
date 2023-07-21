@@ -1,4 +1,4 @@
-# Hoihoi - Student tutor for student - Android flutter app
+# Hoihoi - Student tutor for students - Android flutter app
 
 https://github.com/FangLee2003/Hoihoi/assets/75077747/68af8653-f6de-48a7-bb98-763f1eae3ce9
 
